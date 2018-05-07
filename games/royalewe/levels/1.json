@@ -1,0 +1,35 @@
+{
+	"map":
+	{
+		"w":100,
+		"h":100,
+		"tile":
+		{
+			"width":8,
+			"height":8
+		},
+		"generators":
+		[
+			"random",
+			"buildings",
+			"solid",
+			"walls"
+		],
+		"args":
+		{
+			"pool":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,4,18],
+			"buildings":{"chance":2000, "width":{"min":10,"max":30}, "height":{"min":10,"max":30}},
+			"solid":[18]
+		}
+	},
+	"timer":
+	{
+		"count":0,
+		"limit":100,
+		"cycles":0
+	},
+	"drawmodes":
+	[
+		"sprites"
+	]
+}
