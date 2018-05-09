@@ -142,18 +142,24 @@ royalewe.gameplay =
 			if g.players[1] then
 				actor.damage(g.players[1],g.players[1].hp)
 			end
+--[[
 			if not g.scores.saved then
 				scores.save()
 			end
+--]]
 			if not g.hud.menu then
+				scores.update()
 				module.make(g.hud,EM.menu,EMM.highscores,g.camera.x,g.camera.y+50,66,110,"",EC.red,EC.blue,"center")
 			else
 				function love.textinput(t)
 					local g=Game
 					if g.hud.menu then
-						g.hud.menu.text[2]=g.hud.menu.text[2]..t
+						--g.hud.menu.text[2]=g.hud.menu.text[2]..t
+						--TODO get score index here somehow
+						g.scores.names[2]=g.scores.names[2]..t
 					end
 				end
+				menu.control(g.hud.menu)
 			end
 --[[
 			if not g.hud.menu then

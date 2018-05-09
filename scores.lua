@@ -18,6 +18,40 @@ local function load()
 	return LIP.load("scores.ini")
 end
 
+local function update()
+	local scores=scores.load()
+	local s={}
+	for j=1,#scores.high do
+		table.insert(s,{scores.names[j],scores.high[j]})
+	end
+	local score=Game.score
+	table.insert(s,{"",score})
+
+	local function scoresort(a,b)
+		if a[2]>b[2] then
+			return true
+		else
+			return false
+		end
+	end
+
+	table.sort(s,scoresort)
+	for i=#s,1,-1 do
+		if i>8 then
+			table.remove(s,i)
+		end
+	end
+
+	scores.high={}
+	scores.names={}
+	for k=1,#s do
+		scores.names[k]=s[k][1]
+		scores.high[k]=s[k][2]
+	end
+
+	Game.scores=scores
+end
+
 local function save()
 	local scores=scores.load()
 	local s={}
@@ -57,5 +91,6 @@ end
 return
 {
 	load = load,
+	update = update,
 	save = save,
 }
