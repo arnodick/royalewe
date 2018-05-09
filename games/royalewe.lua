@@ -378,9 +378,9 @@ royalewe.title =
 		LG.printf(movetext,0,g.height/2+40,320,"center",0,1,1)
 		LG.printf("touch person: possess",0,g.height/2+50,320,"center",0,1,1)
 
-		LG.printf("f full screen",0,g.height/2+80,320,"center",0,1,1)
-		LG.printf("esc bye",0,g.height/2+90,320,"center",0,1,1)
-		LG.printf("~ tab",0,g.height/2+100,320,"center",0,1,1)
+		LG.printf("f: full screen",0,g.height/2+80,320,"center",0,1,1)
+		LG.printf("esc: bye",0,g.height/2+90,320,"center",0,1,1)
+		--LG.printf("~ tab",0,g.height/2+100,320,"center",0,1,1)
 	end
 }
 
