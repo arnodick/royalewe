@@ -86,8 +86,8 @@ person.control = function(g,a)
 		else
 			a.spr=a.sprinit+4
 			a.angle=-a.d
-			a.speed=a.speed-0.1
-			if a.speed<=1 then
+			a.speed=a.speed-0.05
+			if a.speed<=0.5 then
 				a.speed=1
 				a.diveroll=false
 			end

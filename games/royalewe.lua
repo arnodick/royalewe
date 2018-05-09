@@ -152,11 +152,19 @@ royalewe.gameplay =
 				module.make(g.hud,EM.menu,EMM.highscores,g.camera.x,g.camera.y+50,66,110,"",EC.red,EC.blue,"center")
 			else
 				function love.textinput(t)
-					local g=Game
-					if g.hud.menu then
-						--g.hud.menu.text[2]=g.hud.menu.text[2]..t
-						--TODO get score index here somehow
-						g.scores.names[2]=g.scores.names[2]..t
+					local m=g.hud.menu
+					if m then
+						if m.index==0 then
+							for i=1,#g.scores.names do
+								if g.scores.names[i]=="" then
+									m.index=i
+								end
+							end
+						end
+
+						if m.index~=0 and #g.scores.names[m.index]<3 then
+							g.scores.names[m.index]=g.scores.names[m.index]..t
+						end
 					end
 				end
 				menu.control(g.hud.menu)
@@ -174,7 +182,15 @@ royalewe.gameplay =
 			g.countdown=true
 		end
 		if key=='escape' then
+			if g.hud.menu then
+				scores.save()
+			end
 			game.state.make(g,"title")
+		elseif key=="return" then
+			if g.hud.menu then
+				scores.save()
+				game.state.make(g,"title")
+			end
 		elseif key=='p' then
 			g.pause = not g.pause
 		end
