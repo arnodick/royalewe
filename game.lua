@@ -93,7 +93,7 @@ game.control = function(g)
 	if g.hud then
 		if g.hud.menu then
 			g.hud.menu.x=g.camera.x
-			g.hud.menu.y=g.camera.y
+			g.hud.menu.y=g.camera.y+63
 			menu.control(g.hud.menu,g.speed)
 		end
 	end

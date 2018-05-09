@@ -79,7 +79,7 @@ end
 royalewe.gameplay =
 {
 	make = function(g)
-		love.keyboard.setTextInput(false)
+		--love.keyboard.setTextInput(false)
 		level.make(g,1,Enums.modes.topdown_tank)
 
 		g.starttimer=0
@@ -144,6 +144,16 @@ royalewe.gameplay =
 			end
 			if not g.scores.saved then
 				scores.save()
+			end
+			if not g.hud.menu then
+				module.make(g.hud,EM.menu,EMM.highscores,g.camera.x,g.camera.y+50,66,110,"",EC.red,EC.blue,"center")
+			else
+				function love.textinput(t)
+					local g=Game
+					if g.hud.menu then
+						g.hud.menu.text[2]=g.hud.menu.text[2]..t
+					end
+				end
 			end
 --[[
 			if not g.hud.menu then
@@ -289,7 +299,7 @@ royalewe.gameplay =
 				table.insert(colortexttable,g.titlecolours[index])
 				table.insert(colortexttable,string.sub(starttext,i,i))
 			end
-			LG.printf(colortexttable,g.camera.x-g.width/2,g.camera.y-12,g.width,"center")
+			LG.printf(colortexttable,g.camera.x-g.width/2,g.camera.y-32,g.width,"center")
 			--LG.printf("you won! ya got "..g.score.." coinz ! coinz are very valuable to ghost goodjob",g.camera.x-g.width/2,g.camera.y-12,g.width,"center",0,1,1)
 --[[
 			if not g.hud.menu then
