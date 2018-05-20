@@ -18,7 +18,7 @@ local function load(dir)
 				_G[globalname] = require(filename)
 			end
 		elseif love.filesystem.isDirectory(filedir) then --if it's a dir, then recursively load any .lua files in there
-			if filedir~=".git" then
+			if filedir~=".git" and filedir~="__MACOSX" then
 				libraries.load(filedir)
 			end
 		end
